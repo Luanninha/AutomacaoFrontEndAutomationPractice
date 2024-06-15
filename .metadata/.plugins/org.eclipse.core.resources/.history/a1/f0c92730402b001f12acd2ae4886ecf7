@@ -1,0 +1,53 @@
+package Steps;
+
+public class Steps {
+	
+	
+
+
+@Given("acesse o site {string}")
+public void acesse_o_site(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+@Given("clique no botao sign")
+public void clique_no_botao_sign() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+@Given("preencha o email")
+public void preencha_o_email() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+@Given("clica no botao create")
+public void clica_no_botao_create() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+@When("preenche as requisicoes")
+public void preenche_as_requisicoes() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+@When("clica em register")
+public void clica_em_register() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+@Then("aparecera a mensagem")
+public void aparecera_a_mensagem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+
+
+}

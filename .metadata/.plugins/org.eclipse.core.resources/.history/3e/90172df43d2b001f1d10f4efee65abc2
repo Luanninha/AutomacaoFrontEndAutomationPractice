@@ -1,0 +1,81 @@
+package Steps;
+
+import Elementos.Elementos;
+import Metodos.Metodos;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class Steps {
+	
+	 Elementos e = new Elementos(); 
+	 Metodos m = new Metodos(); 
+
+
+@Given("acesse o site {string}")
+public void acesse_o_site(String url) throws InterruptedException {
+	m.abrirNavegador(url);
+	m.pausa(2000);
+   }
+
+@Given("clique no botao sign")
+public void clique_no_botao_sign() {
+   m.clicar(e.getBtnsignin());
+}
+
+@Given("preencha o email")
+public void preencha_o_email() {
+   m.preencher(e.getEmail(), "giovana_andrea_cardoso@inepar.com.br");
+}
+
+@Given("clica no botao create")
+public void clica_no_botao_create() {
+   m.clicar(e.getBtncreate());
+}
+
+@When("preenche as requisicoes")
+public void preenche_as_requisicoes() {
+	m.clicar(e.getTitle());
+m.preencher(e.getFirstname(), "Alice Eliane "); 
+m.preencher(e.getLastname(), "Hadassa Peixoto");
+m.preencher(e.getPassword(), "123456");
+m.preencher(e.getDatybirthdays(), "20");
+m.preencher(e.getDatybirthmonths(), "01");
+m.preencher(e.getDatybirthyears(), "2001");
+}
+
+@When("clica em register")
+public void clica_em_register() {
+   m.clicar(e.getCheckbox());
+   m.clicar(e.getBtncreate());
+}
+
+@Then("aparecera a mensagem")
+public void aparecera_a_mensagem() {
+
+}
+
+
+@Given("preencha o emaillogin")
+public void preencha_o_emaillogin() {
+	m.preencher(e.getEmaillogin(), null);
+}
+
+@When("preencha o Passwordlogin")
+public void preencha_o_passwordlogin() {
+   m.preencher(e.getPasswordlogin(), "123456");
+}
+
+@Given("clica no botao signinlogin")
+public void clica_no_botao_signinlogin() {
+   m.clicar(e.getBtnsigninlogin());
+}
+
+@Then("fara o login")
+public void fara_o_login() {
+   }
+
+
+
+
+}
