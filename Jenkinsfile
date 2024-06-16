@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/seu-usuario/seu-repositorio.git'
+                git branch: 'master', url: 'https://github.com/Luanninha/AutomacaoFrontEndAutomationPractice.git'
             }
         }
 
