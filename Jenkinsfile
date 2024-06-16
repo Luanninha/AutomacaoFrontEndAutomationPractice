@@ -4,48 +4,44 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'your-credentials-id', url: 'https://github.com/Luanninha/AutomacaoFrontEndAutomationPractice.git'
+                git branch: 'master', url: 'https://github.com/seu-usuario/seu-repositorio.git'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                // Compilação do projeto
+                sh 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
+                // Execução dos testes
                 sh 'mvn test'
-            }
-            post {
-                always {
-                    junit '**/target/surefire-reports/*.xml'
-                }
             }
         }
 
-        stage('Deploy') {
-            when {
-                branch 'master'
-            }
+        stage('Post-build Actions') {
             steps {
-                sh 'echo "Deploying to Staging..."'
-                // Adicione seus comandos de implantação aqui
+                // Ações pós-build, como arquivar relatórios de teste
+                junit 'target/surefire-reports/*.xml'
             }
         }
     }
 
     post {
+        always {
+            // Passos a serem executados sempre, independente de sucesso ou falha
+            cleanWs()
+        }
         success {
-            mail to: 'seu-email@exemplo.com',
-                 subject: "Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                 body: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' completed successfully."
+            // Passos a serem executados em caso de sucesso
+            echo 'Build successful!'
         }
         failure {
-            mail to: 'seu-email@exemplo.com',
-                 subject: "Failure: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                 body: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' failed. Please check the Jenkins logs for more details."
+            // Passos a serem executados em caso de falha
+            echo 'Build failed!'
         }
     }
 }
